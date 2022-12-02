@@ -1,7 +1,7 @@
 {
-  "name": "Text editor",
+  "name": "JATE",
   "version": "1.0.0",
-  "description": "Not another text editor",
+  "description": "Just another text editor",
   "main": "server.js",
   "scripts": {
     "start:dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run server\"",
