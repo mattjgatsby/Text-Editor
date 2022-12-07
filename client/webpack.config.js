@@ -27,14 +27,13 @@ module.exports = () => {
       }),
       // Creates a manifest.json file.
       new WebpackPwaManifest({
-        fingerprints: false,
-        inject: true,
         name: "Just another text editor",
         short_name: "JATE",
         description: "It's a text editor",
         background_color: "#225ca3",
         theme_color: "#225ca3",
-        start_url: "./",
+        start_url: "/",
+        fingerprints: false,
         icons: [
           {
             src: path.resolve("./src/images/logo.png"),
@@ -53,7 +52,7 @@ module.exports = () => {
         },
         {
           test: /\.m?js$/,
-          exclude: /node_modules/,
+          exclude: /(node_modules|bower_components)/,
           use: {
             loader: "babel-loader",
             options: {
