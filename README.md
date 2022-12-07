@@ -22,30 +22,23 @@ Here I have logic that provides a way to accept content and add it to the databa
 
 ```JavaScript
 export const putDb = async (content) => {
-  try {
-    const jateDb = await openDB("jate", 1);
-    const tx = jateDb.transaction("jate", "readwrite");
-    const store = tx.objectStore("jate");
-    const request = store.add({ id: 1, value: content });
-    const result = await request;
-  } catch (err) {
-    console.log(err);
-  }
+  const jate = await openDB("jate", 1);
+  const tx = jate.transaction("jate", "readwrite");
+  const store = tx.objectStore("jate");
+  const request = store.put({ id: 1, content: content });
+  const result = await request;
+  return result;
 };
 ```
 Similiarly here I wrote logic to get all the content from the database
 ```JavaScript
 export const getDb = async () => {
-  try {
-    const jateDb = await ("jate", 1);
-    const tx = jateDb.transaction("jate", "readonly");
-    const store = tx.objectStore("jate");
-    const request = store.get(1);
-    const result = await request;
-    return result.value;
-  } catch (error) {
-    console.log(error);
-  }
+   const jate = await openDB('jate', 1);
+   const tx = jate.transaction('jate', 'readonly')
+   const store = tx.objectStore('jate');
+   const request = store.getAll();
+   const result = await (request);
+   return result.value;
 };
 ```
 
